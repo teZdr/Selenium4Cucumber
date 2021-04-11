@@ -10,10 +10,11 @@ import pages.LoginPage;
 
 public class MyStepdefs {
 
-    private final WebDriver webDriver;
-    private final LoginPage loginPage;
-    private final InventoryPage inventoryPage;
+    private WebDriver webDriver;
+    private LoginPage loginPage;
+    private InventoryPage inventoryPage;
     private Hooks hooks;
+
 
 
     public MyStepdefs(Hooks hooks) {
@@ -23,10 +24,10 @@ public class MyStepdefs {
         this.inventoryPage = new InventoryPage(webDriver);
     }
 
-//    @Given("I open the site url \"([^\"]*)\"$")
-//    public void iOpenTheSiteUrl(String url) {
-//        webDriver.get(url);
-//    }
+    @Given("I open the site url {string}")
+    public void iOpenTheSiteUrl(String url) {
+        webDriver.get(url);
+    }
 
     @When("I enter credentials and click login")
     public void iEnterCredentialsAndClickLogin() {
@@ -36,10 +37,5 @@ public class MyStepdefs {
     @Then("I'm logged in")
     public void iMLoggedIn() {
         inventoryPage.verifySuccessfulLogin();
-    }
-
-    @Given("I open the site url {string}")
-    public void iOpenTheSiteUrl(String url) {
-        webDriver.get(url);
     }
 }

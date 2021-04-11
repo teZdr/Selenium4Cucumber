@@ -8,18 +8,21 @@ import utils.WebDriverInstance;
 public class Hooks extends WebDriverInstance {
 
 
+    private String scenarioName = "";
+
     @Before
-    public void setUpDriver() {
+    public void setupBrowser() {
         createDriver();
+    }
+
+
+
+    public WebDriver getDriver() {
+        return webDriver;
     }
 
     @After
     public void tearDown() {
         stopSelenium();
     }
-
-    public WebDriver getDriver() {
-        return webDriver;
-    }
-
 }
