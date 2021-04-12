@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import utils.WebDriverModule;
 
+import static org.testng.Assert.assertTrue;
+
 public class InventoryPage extends WebDriverModule {
 
     private By cartIcon = By.id("shopping_cart_container");
@@ -12,8 +14,9 @@ public class InventoryPage extends WebDriverModule {
         super(webDriver);
     }
 
-    public void verifySuccessfulLogin() {
+    public void verifySuccessfulLogin() throws InterruptedException {
         waitForElementToLoad(cartIcon, 5);
-//        assertTrue(webDriver.findElement(cartIcon).isDisplayed(), "Inventory page not loaded!");
+        assertTrue(webDriver.findElement(cartIcon).isDisplayed(), "Inventory page not loaded!");
+        Thread.sleep(3000);
     }
 }

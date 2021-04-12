@@ -10,6 +10,7 @@ public class WebDriverInstance {
     public void createDriver() {
         WebDriverManager.chromedriver().setup();
         this.webDriver = new ChromeDriver();
+        this.webDriver.manage().window().maximize();
     }
 
     public void stopSelenium() {
