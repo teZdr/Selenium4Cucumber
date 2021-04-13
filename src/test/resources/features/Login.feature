@@ -1,6 +1,6 @@
 Feature: All
 
-  @replacemeTag
+  @Test
   Scenario Outline: Basic login
     Given I open the site url "<url>"
     When I enter credentials and click login
@@ -10,6 +10,7 @@ Feature: All
       | url                        |
       | https://www.saucedemo.com/ |
 
+  @Test
   Scenario Outline: Basic login2
     Given I open the site url "<url>"
     When I enter credentials and click login
