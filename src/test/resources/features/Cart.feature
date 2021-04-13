@@ -1,4 +1,4 @@
-Feature: All
+Feature: Cart
 
   @replacemeTag
   Scenario Outline: Basic login
