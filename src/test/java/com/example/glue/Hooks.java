@@ -5,13 +5,13 @@ import io.cucumber.java.Before;
 import org.openqa.selenium.WebDriver;
 import utils.WebDriverInstance;
 
+import java.net.MalformedURLException;
+
 public class Hooks extends WebDriverInstance {
 
 
-    private String scenarioName = "";
-
     @Before
-    public void setupBrowser() {
+    public void setupBrowser() throws MalformedURLException {
         createDriver();
     }
 

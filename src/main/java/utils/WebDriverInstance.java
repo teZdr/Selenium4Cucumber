@@ -1,15 +1,21 @@
 package utils;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class WebDriverInstance {
     protected WebDriver webDriver;
 
-    public void createDriver() {
-        WebDriverManager.chromedriver().setup();
-        this.webDriver = new ChromeDriver();
+    public void createDriver() throws MalformedURLException {
+        DesiredCapabilities caps = new DesiredCapabilities();
+        caps.setBrowserName(System.getProperty("browser"));
+        caps.setCapability("resolution", "1920x1080");
+        caps.setAcceptInsecureCerts(true);
+        this.webDriver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), caps);
         this.webDriver.manage().window().maximize();
     }
 

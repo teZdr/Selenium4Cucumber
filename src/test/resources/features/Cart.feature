@@ -1,14 +1,11 @@
 Feature: Cart
 
   @Test
-  Scenario Outline: Basic login
-    Given I open the site url "<url>"
+  Scenario: Basic login
+    Given I open the site url "https://www.saucedemo.com/"
     When I enter credentials and click login
     Then I'm logged in
 
-    Examples:
-      | url                        |
-      | https://www.saucedemo.com/ |
 
   @Test
   Scenario Outline: Basic login2
