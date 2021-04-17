@@ -17,7 +17,7 @@ public class LoginPage extends WebDriverModule {
 
     public void enterCredentials() {
         waitForElementToLoad(userName, 5);
-        typeByLocator(userName, "standart_user");
+        typeByLocator(userName, "standard_user");
         typeByLocator(password, "secret_sauce");
         click(loginButton);
     }

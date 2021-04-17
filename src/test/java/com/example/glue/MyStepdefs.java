@@ -1,6 +1,5 @@
-package com.example.StepDefintions;
+package com.example.glue;
 
-import Hooks.Hooks;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -10,9 +9,9 @@ import pages.LoginPage;
 
 public class MyStepdefs {
 
-    private WebDriver webDriver;
-    private LoginPage loginPage;
-    private InventoryPage inventoryPage;
+    private final WebDriver webDriver;
+    private final LoginPage loginPage;
+    private final InventoryPage inventoryPage;
     private Hooks hooks;
 
 
@@ -35,7 +34,7 @@ public class MyStepdefs {
     }
 
     @Then("I'm logged in")
-    public void iMLoggedIn() {
+    public void iMLoggedIn() throws InterruptedException {
         inventoryPage.verifySuccessfulLogin();
     }
 }

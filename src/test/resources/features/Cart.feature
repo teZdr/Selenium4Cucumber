@@ -1,4 +1,4 @@
-Feature: All
+Feature: Cart
 
   @Test
   Scenario Outline: Basic login
