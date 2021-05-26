@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
+
 public class WebDriverModule {
 
     protected WebDriver webDriver;
@@ -17,7 +19,7 @@ public class WebDriverModule {
     public boolean waitForElementToLoad(By locator, long timeoutInSeconds) {
         boolean result = true;
         try {
-            new WebDriverWait(webDriver, timeoutInSeconds).until(ExpectedConditions.visibilityOfElementLocated(locator));
+            new WebDriverWait(webDriver, Duration.ofSeconds(timeoutInSeconds)).until(ExpectedConditions.visibilityOfElementLocated(locator));
         } catch (TimeoutException e) {
             result = false;
         }

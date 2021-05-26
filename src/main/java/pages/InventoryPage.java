@@ -15,8 +15,7 @@ public class InventoryPage extends WebDriverModule {
     }
 
     public void verifySuccessfulLogin() throws InterruptedException {
-        waitForElementToLoad(cartIcon, 5);
-        assertTrue(webDriver.findElement(cartIcon).isDisplayed(), "Inventory page not loaded!");
+        assertTrue(waitForElementToLoad(cartIcon, 5), "Inventory page not loaded!");
         Thread.sleep(3000);
     }
 }
