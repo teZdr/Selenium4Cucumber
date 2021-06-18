@@ -12,7 +12,7 @@ public class WebDriverInstance {
 
     public void createDriver() throws MalformedURLException {
         DesiredCapabilities caps = new DesiredCapabilities();
-        caps.setBrowserName(System.getProperty("browser"));
+        caps.setBrowserName(configureBrowserType());
         caps.setCapability("resolution", "1920x1080");
         caps.setAcceptInsecureCerts(true);
         this.webDriver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), caps);
@@ -24,5 +24,12 @@ public class WebDriverInstance {
             webDriver.quit();
             webDriver = null;
         }
+    }
+
+    public String configureBrowserType() {
+        if(System.getProperty("browser")==null || System.getProperty("browser").isBlank()) {
+            return "chrome";
+        }
+        return System.getProperty("browser");
     }
 }
