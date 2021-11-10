@@ -13,7 +13,19 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
+  services:
+      hub:
+        image: selenium/hub:latest
+      firefox:
+        image: selenium/node-firefox:latest
+        env:
+          HUB_HOST: hub
+          HUB_PORT: 4444
+      chrome:
+        image: selenium/node-chrome:latest
+        env:
+          HUB_HOST: hub
+          HUB_PORT: 4444
     steps:
     - uses: actions/checkout@v2
     - name: Set up JDK 11
