@@ -16,11 +16,6 @@ jobs:
   services:
       hub:
         image: selenium/hub:latest
-      firefox:
-        image: selenium/node-firefox:latest
-        env:
-          HUB_HOST: hub
-          HUB_PORT: 4444
       chrome:
         image: selenium/node-chrome:latest
         env:
