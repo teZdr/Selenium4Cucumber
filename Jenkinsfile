@@ -6,7 +6,7 @@ node {
             git url: 'https://github.com/teZdr/Selenium4Cucumber'
         }
         stage('Run the dockers') {
-            sh 'cd /var/lib/jenkins/workspace/Selenium4/'
+//             sh 'cd /var/lib/jenkins/workspace/Selenium4/'
             sh 'pwd'
             sh 'ls -lha'
             sh 'docker-compose up -d'
