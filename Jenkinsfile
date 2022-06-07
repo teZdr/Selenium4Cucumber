@@ -11,9 +11,8 @@ node {
             sh 'ls -lha'
             sh 'docker-compose up -d'
         }
-        stage('Run the tests') 
-        withEnv(["CUCUMBER_PUBLISH_TOKEN=${cucumberReportsToken}"]){
-            sh 'mvn clean install -Dbrowser=${BrowserType}'
+        stage('Run the tests') {
+            sh 'mvn clean install -Dbrowser=chrome'
         }
         
         stage('Kill docker') {
