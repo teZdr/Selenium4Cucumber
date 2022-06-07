@@ -1,39 +1,27 @@
-pipeline {
-    agent any
-    stages {
+node {
+    try {
+        cleanWs()
+        
         stage('Pull the code') {
-            steps {
-                sh 'git clone --branch ubu-test https://github.com/teZdr/Selenium4Cucumber'
-                
-            }
-        }
-        stage('Prepare ws') {
-            steps {
-                sh 'cd /var/lib/jenkins/workspace/PipelineTest/Selenium4Cucumber/'
-                sh 'pwd'
-                sh 'ls -lha'
-            }
+            git url: 'https://github.com/teZdr/Selenium4Cucumber'
         }
         stage('Run the dockers') {
-            steps {
-                sh 'docker-compose up -d'
-            }
+            sh 'cd /var/lib/jenkins/workspace/Selenium4/'
+            sh 'pwd'
+            sh 'ls -lha'
+            sh 'docker-compose up -d'
         }
-        stage('Run the tests') {
-            steps {
-                sh 'mvn clean install -Dbrowser=chrome'
-            }
+        stage('Run the tests') 
+        withEnv(["CUCUMBER_PUBLISH_TOKEN=${cucumberReportsToken}"]){
+            sh 'mvn clean install -Dbrowser=${BrowserType}'
         }
-        stage('Stop docker') {
-            steps {
-                sh 'docker stop $(docker ps -a -q)'
-                sh 'docker rm $(docker ps -a -q)'
-            }
+        
+        stage('Kill docker') {
+            sh 'docker-compose down'
         }
+        
     }
-    post { 
-        always { 
-            cleanWs()
-        }
+    catch(e) {
+        sh 'Build Error'
     }
 }
